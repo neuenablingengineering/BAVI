@@ -1,0 +1,6 @@
+# Example of how to initialize the teraranger EVO lidar w/ linux host
+# You shouldn't need this. The constructor of AudioGenerator does this all
+# Also good luck exiting a screen session w/o suspending lol
+
+echo -en '\x00\x11\x01\x45' > /dev/ttyACM0; # set up int mode
+sudo screen /dev/ttyACM0 -U --parity=no --word=8 --stop=1 115200; # initialize serial connection

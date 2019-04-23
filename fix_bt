@@ -1,0 +1,13 @@
+# This should be an autoexec on boot or someting
+# But this is procedure to get bluetooth to work
+# We NEED pulseaudio ver 10+
+pulseaudio --kill
+pulseaudio -D
+pactl load-module module-bluetooth-discover
+sudo bluetoothctl
+# (PAIR/TRUST if needed, and) CONNECT to ur device here
+# THEN lastly we need to run
+pactl list sinks short
+# Look for the sink matching ur bluetooth device, should have MAC addr somewhere in there
+# W/ that name of that device, finally run
+pactl set-default-sink ~UR DEVICE NAME HERE FROM PREVIOUS COMMAND~
